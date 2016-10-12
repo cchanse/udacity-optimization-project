@@ -7,7 +7,7 @@ For this Udacity optimization project, I optimized this online portfolio to impr
 I used Github's gh-pages to run the site through PageSpeed Insights. To improve the score, I did the following:
 
 * optimized the pizzeria.jpg file and made it the actual size it should be rendered at.
-* minified CSS
+* minified CSS and inlined it in both index.html and pizza.html
 * move JavaScript to before closing body tag
 
 ###Part 2: Optimize Frames per Second in pizza.html
