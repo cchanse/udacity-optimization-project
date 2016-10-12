@@ -7,9 +7,8 @@ For this Udacity optimization project, I optimized this online portfolio to impr
 I used Github's gh-pages to run the site through PageSpeed Insights. To improve the score, I did the following:
 
 * optimized the pizzeria.jpg file and made it the actual size it should be rendered at.
-* removed link to the Google fonts in the head which was taking awhile to get
+* minified CSS
 * move JavaScript to before closing body tag
-* moved the CSS from link to inside of head and minified it
 
 ###Part 2: Optimize Frames per Second in pizza.html
 
@@ -22,7 +21,7 @@ In the main.js file these changes were made to render a consistent frame-rate of
 
 I used Gulp to minify CSS and JavaScript. However I ended up moving the CSS to the head section of index.html and pizza.html to improve load time.
 
-When building the project and running Gulp, cd into the project folder and type 'gulp'. This command will run the minification tasks for CSS and JavaScript. 
+When building the project and running Gulp, cd into the project folder and type 'gulp'. This command will run the minification tasks for CSS and JavaScript.
 
 ### Customization with Bootstrap
 The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
