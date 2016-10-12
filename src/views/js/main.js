@@ -501,9 +501,29 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  // More efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
+  // var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
+
+  //set up the variable for the different distances that the pizzas should move
+  var increment = 0;
+
+  //anyway to move things inside of for loop outside it?
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    // var modulo = i % 5;
+    // console.log('this is the modulo: ' + modulo);
+    // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    //increment a bit
+    // set the increment to just for options instead of doing a more expensive modulo operation
+    if (increment == 4 ) {
+      increment = 0;
+    }
+    var phase = Math.sin((document.body.scrollTop / 1250) + increment);
+
+    increment++;
+
+    //CSS3 has hardware acceleration and certain transformations that reduce the need to trigger a re-layout
+    //transform: translateX
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -524,7 +544,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+
+  for (var i = 0; i < 30; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
