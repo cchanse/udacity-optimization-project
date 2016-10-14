@@ -13,15 +13,17 @@ I used Github's gh-pages to run the site through PageSpeed Insights. To improve 
 ###Part 2: Optimize Frames per Second in pizza.html
 
 In the main.js file these changes were made to render a consistent frame-rate of 60fps when scrolling:
-* Reduce the number of pizzas generated on page load from 200 to 30.
-* More efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
-* Set the increment to just for options instead of doing a more expensive modulo operation
+* Reduce the number of pizzas generated on page load from 200 to 30
+* Use a more efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
+* To improve speed at which pizzas change, set limit to 4 for changePizzaSizes() since the total number of pizzas shown is 4.
 
-### Build Tools
+### Build Tools and Run Instructions
 
 I used Gulp to minify CSS and JavaScript. However I ended up moving the CSS to the head section of index.html and pizza.html to improve load time.
 
 When building the project and running Gulp, cd into the project folder and type 'gulp'. This command will run the minification tasks for CSS and JavaScript.
+
+Open up index.html to view the project.
 
 ### Customization with Bootstrap
 The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.

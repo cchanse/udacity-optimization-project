@@ -448,11 +448,12 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  // More efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < 4; i++) {
+      var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
 
@@ -514,7 +515,7 @@ function updatePositions() {
     // console.log('this is the modulo: ' + modulo);
     // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     //increment a bit
-    // set the increment to just for options instead of doing a more expensive modulo operation
+    // set the increment to just four options instead of doing a more expensive modulo operation
     if (increment == 4 ) {
       increment = 0;
     }
