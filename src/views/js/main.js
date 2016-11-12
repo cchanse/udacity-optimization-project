@@ -498,35 +498,49 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+
+// More efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
+// We do not necessarily need to access the DOM element for every scroll. Move this array outside of updatePositions
+var items = document.getElementsByClassName('mover');
+
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  // More efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
-  // var items = document.querySelectorAll('.mover');
-  var items = document.getElementsByClassName('mover');
+  var cachedScrollTop = document.body.scrollTop/1250;   //https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
+  var phase;
+
+  for (var i = 0; i < items.length; i++) {
+    //   console.log('cached scroll top:' + cachedScrollTop);
+
+    phase = Math.sin((cachedScrollTop) + (i % 5));
+          items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+   }
 
   //set up the variable for the different distances that the pizzas should move
-  var increment = 0;
+  // var increment = 0;
 
   //anyway to move things inside of for loop outside it?
-  for (var i = 0; i < items.length; i++) {
+  // for (var i = 0; i < items.length; i++) {
     // var modulo = i % 5;
     // console.log('this is the modulo: ' + modulo);
     // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     //increment a bit
     // set the increment to just four options instead of doing a more expensive modulo operation
-    if (increment == 4 ) {
-      increment = 0;
-    }
-    var phase = Math.sin((document.body.scrollTop / 1250) + increment);
+    // if (increment == 4 ) {
+    //   increment = 0;
+    // }
+    // var phase = Math.sin((document.body.scrollTop / 1250) + increment);
 
-    increment++;
+    // increment++;
 
     //CSS3 has hardware acceleration and certain transformations that reduce the need to trigger a re-layout
     //transform: translateX
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+    // items[i].style.left = items[i].basicLeft + 256 + 'px';
+    // console.log(items[i].basicLeft);
+    // items[i].style.transform = "translateX(" + items[i].basicLeft + 256 + "px)";
+    // console.log("test: translateX(" + items[i].basicLeft + 100 * phase + "px)");
+  // }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.

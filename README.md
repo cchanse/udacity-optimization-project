@@ -15,7 +15,10 @@ I used Github's gh-pages to run the site through PageSpeed Insights. To improve 
 In the main.js file these changes were made to render a consistent frame-rate of 60fps when scrolling:
 * Reduce the number of pizzas generated on page load from 200 to 30
 * Use a more efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
-* To improve speed at which pizzas change, set limit to 4 for changePizzaSizes() since the total number of pizzas shown is 4.
+* Move 'var items' outside of updatePositions(). We do not need to access the DOM element for every scroll.
+* Created variable and moved document.body.scrollTop/1250 outside of for loop because calculation only needs to run once
+* Put phase values in array in updatePositions(). Phase values are consistently the same because we are calculating the same set of 5 numbers for all of our pizzas no matter how big list of pizza is
+* To improve speed at which pizzas change, set limit to 4 for changePizzaSizes() since the total number of pizzas shown is 4
 
 ### Build Tools and Run Instructions
 
