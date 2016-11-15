@@ -581,7 +581,8 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   'use strict';
   var cols = 8;
-  var s = 256;
+  // var s = 256;
+  var s = window.screen.height/3;
 
   for (var i = 0; i < 30; i++) {
     var elem = document.createElement('img');
