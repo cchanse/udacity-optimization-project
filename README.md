@@ -26,6 +26,7 @@ In the main.js file these changes were made to render a consistent frame-rate of
 * Calculate the number of rows needed for sliding pizzas using the height property of the screen
 * Declare the elem variable (var elem;) in the initialisation of the for-loop to prevent it from being created every time the loop is executed
 * Since document.getElementById() Web API call is faster, use it for #movingPizzas1 and move this DOM call outside the for statement and save it into a local variable
+*  Increase performance with hardware accelerated CSS. Add transform: translateZ(0) and backface-visibility:hidden to trigger GPU.
 
 ### Build Tools and Run Instructions
 
