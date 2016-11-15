@@ -22,6 +22,7 @@ In the main.js file these changes were made to render a consistent frame-rate of
 * Change querySelector to document.getElementById() as document.getElementById Web API call is faster
 * The newwidth and dx variables can go out the loop and have initial value set
 * Declare the pizzasDiv variable outside the loop, so DOM call is made only once
+* Save the array length for updatePositions(), which is part of the condition statement, in a local variable, so the array's length property is not accessed to check its value at each iteration
 
 ### Build Tools and Run Instructions
 

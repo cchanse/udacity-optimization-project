@@ -532,7 +532,7 @@ function updatePositions() {
   var cachedScrollTop = document.body.scrollTop/1250;   //https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
   var phase;
 
-  for (var i = 0; i < items.length; i++) {
+  for (var i = 0, len = items.length; i < len; i++) {
     //   console.log('cached scroll top:' + cachedScrollTop);
 
     phase = Math.sin((cachedScrollTop) + (i % 5));
