@@ -19,6 +19,7 @@ In the main.js file these changes were made to render a consistent frame-rate of
 * Created variable and moved document.body.scrollTop/1250 outside of for loop because calculation only needs to run once
 * Put phase values in array in updatePositions(). Phase values are consistently the same because we are calculating the same set of 5 numbers for all of our pizzas no matter how big list of pizza is
 * To improve speed at which pizzas change, set limit to 4 for changePizzaSizes() since the total number of pizzas shown is 4
+* Change querySelector to document.getElementById() as document.getElementById Web API call is faster
 
 ### Build Tools and Run Instructions
 
