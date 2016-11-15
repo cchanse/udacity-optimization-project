@@ -467,10 +467,13 @@ var resizePizzas = function(size) {
   // More efficient way to access the DOM than querySelectorAll - document.getElementsByClass()
   function changePizzaSizes(size) {
     'use strict';
+
+    var container = document.getElementsByClassName('randomPizzaContainer');
+    var dx = determineDx(container[0], size);
+    var newwidth = (container[0].offsetWidth + dx) + 'px';
+
     for (var i = 0; i < 4; i++) {
-      var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
-      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
+      container[i].style.width = newwidth;
     }
   }
 
