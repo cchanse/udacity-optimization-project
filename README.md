@@ -21,6 +21,7 @@ In the main.js file these changes were made to render a consistent frame-rate of
 * To improve speed at which pizzas change, set limit to 4 for changePizzaSizes() since the total number of pizzas shown is 4
 * Change querySelector to document.getElementById() as document.getElementById Web API call is faster
 * The newwidth and dx variables can go out the loop and have initial value set
+* Declare the pizzasDiv variable outside the loop, so DOM call is made only once
 
 ### Build Tools and Run Instructions
 
